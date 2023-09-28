@@ -20,7 +20,7 @@ public class Paciente extends Usuario implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name= "uuid", strategy = "uuid2")
     @javax.persistence.Id
-    protected String id;
+    private String id;
     
     private String obraSocial;
     

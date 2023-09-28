@@ -3,11 +3,12 @@ package com.cg.servicioSalud.entidades;
 
 import com.cg.servicioSalud.enums.Modalidad;
 import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.Id;
@@ -19,24 +20,24 @@ public class Profesional extends Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name= "uuid", strategy = "uuid2")
-    protected String id;
+    private String id;
     
     private Double reputacion;
     
-    private Integer tarifa;
+    private Double tarifa;
     
-    @OneToMany
-    private List<Disponibilidad> disponibilidad;
+    @OneToOne
+    private Disponibilidad disponibilidad;
     
     @Enumerated(EnumType.STRING)
     private Modalidad modalidad;
     
     private String ubicacion;
     
-    @OneToMany
+    @ElementCollection
     private List<String> obrasSociales;
     
     private String especialidad;
     
-    private Boolean estado; // true = alta; false = baja
+    private Boolean activo; // true = alta; false = baja
 }

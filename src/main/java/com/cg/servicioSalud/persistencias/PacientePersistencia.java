@@ -1,5 +1,5 @@
 
-package com.cg.servicioSalud.persistencia;
+package com.cg.servicioSalud.persistencias;
 
 public class PacientePersistencia {
     
