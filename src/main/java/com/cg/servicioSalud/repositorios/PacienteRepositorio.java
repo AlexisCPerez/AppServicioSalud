@@ -10,7 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PacienteRepositorio extends JpaRepository<Paciente, String> {
-    
-    @Query("SELECT p FROM Paciente p WHERE p.especialidad = :especialidad AND p.activo = true)")
-    public List <Paciente> buscarPorEspecialidad(@Param("especialidad") String especialidad);
+
 }

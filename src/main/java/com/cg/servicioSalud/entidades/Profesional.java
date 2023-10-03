@@ -8,10 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Data
@@ -25,9 +24,6 @@ public class Profesional extends Usuario {
     private Double reputacion;
     
     private Double tarifa;
-    
-    @OneToOne
-    private Disponibilidad disponibilidad;
     
     @Enumerated(EnumType.STRING)
     private Modalidad modalidad;

@@ -1,14 +1,12 @@
 
 package com.cg.servicioSalud.servicios;
 
-import com.cg.servicioSalud.entidades.Disponibilidad;
 import com.cg.servicioSalud.entidades.Imagen;
 import com.cg.servicioSalud.entidades.Profesional;
 import com.cg.servicioSalud.enums.Dia;
 import com.cg.servicioSalud.enums.Horario;
 import com.cg.servicioSalud.enums.Modalidad;
 import com.cg.servicioSalud.enums.Rol;
-import com.cg.servicioSalud.repositorios.DisponibilidadRepositorio;
 import com.cg.servicioSalud.repositorios.ProfesionalRepositorio;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +22,8 @@ public class ProfesionalServicio {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
     
-    @Autowired
-    private DisponibilidadRepositorio disponibilidadRepositorio;
+//    @Autowired
+//    private DisponibilidadRepositorio disponibilidadRepositorio;
     
     @Transactional
     public void crearProfesional(String nombreCompleto, String email, 
@@ -41,7 +39,6 @@ public class ProfesionalServicio {
         
         profesional.setNombreCompleto(nombreCompleto);
         profesional.setEspecialidad(especialidad);
-        profesional.getDisponibilidad().setJornada(jornada);
         profesional.setActivo(Boolean.FALSE);
         profesional.setUbicacion(ubicacion);
         profesional.setModalidad(modalidad);
@@ -70,20 +67,12 @@ public class ProfesionalServicio {
         //validar
         
         Optional <Profesional> respuesta = profesionalRepositorio.findById(id);
-        Optional <Disponibilidad> respuestaDisponibilidad = disponibilidadRepositorio.findById(idDisponibilidad);
-        
-        Disponibilidad disponibilidad = new Disponibilidad();
-        
-        if(respuestaDisponibilidad.isPresent()){
-            disponibilidad = respuestaDisponibilidad.get();
-        }
         
         if (respuesta.isPresent()){
             
             Profesional profesional = respuesta.get();
             profesional.setNombreCompleto(nombreCompleto);
             profesional.setEspecialidad(especialidad);
-            profesional.getDisponibilidad().setJornada(jornada);
             profesional.setActivo(Boolean.FALSE);
             profesional.setUbicacion(ubicacion);
             profesional.setModalidad(modalidad);

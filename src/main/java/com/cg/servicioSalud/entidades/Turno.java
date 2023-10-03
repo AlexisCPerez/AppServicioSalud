@@ -7,12 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Data
